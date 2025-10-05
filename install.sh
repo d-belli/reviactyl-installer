@@ -28,6 +28,7 @@ set -e
 #                                                                                    #
 ######################################################################################
 
+# Default release variables
 export GITHUB_SOURCE="v1.0.0"
 export SCRIPT_RELEASE="v1.0.0"
 export GITHUB_BASE_URL="https://raw.githubusercontent.com/d-belli/pterodactyl-installer/"
@@ -41,18 +42,31 @@ if ! [ -x "$(command -v curl)" ]; then
   exit 1
 fi
 
-# Always remove lib.sh, before downloading it
+# Always remove lib.sh before downloading it
 [ -f /tmp/lib.sh ] && rm -rf /tmp/lib.sh
 curl -sSL -o /tmp/lib.sh "$GITHUB_BASE_URL"/master/lib/lib.sh
 # shellcheck source=lib/lib.sh
 source /tmp/lib.sh
 
 execute() {
-  echo -e "\n\n* reviactyl-installer $(date) \n\n" >>$LOG_PATH
+  if [ -z "$1" ]; then
+    error "* ERROR: Missing release variable (argument 1 empty)"
+    exit 1
+  fi
 
-  [[ "$1" == *"canary"* ]] && export GITHUB_SOURCE="master" && export SCRIPT_RELEASE="canary"
+  echo -e "\n\n* reviactyl-installer $(date) \n\n" >>"$LOG_PATH"
+
+  # Override release variables for canary
+  if [[ "$1" == *"canary"* ]]; then
+    export GITHUB_SOURCE="master"
+    export SCRIPT_RELEASE="canary"
+  else
+    export GITHUB_SOURCE="v1.0.0"
+    export SCRIPT_RELEASE="v1.0.0"
+  fi
+
   update_lib_source
-  run_ui "${1//_canary/}" |& tee -a $LOG_PATH
+  run_ui "${1//_canary/}" |& tee -a "$LOG_PATH"
 
   if [[ -n $2 ]]; then
     echo -e -n "* Installation of $1 completed. Do you want to proceed to $2 installation? (y/N): "
@@ -74,20 +88,16 @@ while [ "$done" == false ]; do
     "Install the panel"
     "Install Wings"
     "Install both [0] and [1] on the same machine (wings script runs after panel)"
-    # "Uninstall panel or wings\n"
-
-    "Install panel with canary version of the script (the versions that lives in master, may be broken!)"
-    "Install Wings with canary version of the script (the versions that lives in master, may be broken!)"
+    "Install panel with canary version of the script (the versions that live in master, may be broken!)"
+    "Install Wings with canary version of the script (the versions that live in master, may be broken!)"
     "Install both [3] and [4] on the same machine (wings script runs after panel)"
-    "Uninstall panel or wings with canary version of the script (the versions that lives in master, may be broken!)"
+    "Uninstall panel or wings with canary version of the script"
   )
 
   actions=(
     "panel"
     "wings"
     "panel;wings"
-    # "uninstall"
-
     "panel_canary"
     "wings_canary"
     "panel_canary;wings_canary"
@@ -105,10 +115,13 @@ while [ "$done" == false ]; do
 
   [ -z "$action" ] && error "Input is required" && continue
 
-  valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
-  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Invalid option"
-  [[ " ${valid_input[*]} " =~ ${action} ]] && done=true && IFS=";" read -r i1 i2 <<<"${actions[$action]}" && execute "$i1" "$i2"
+  valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i++)); do echo "$i"; done)")
+  [[ ! " ${valid_input[*]} " =~ $action ]] && { error "Invalid option"; continue; }
+
+  done=true
+  IFS=";" read -r i1 i2 <<<"${actions[$action]}"
+  execute "$i1" "$i2"
 done
 
-# Remove lib.sh, so next time the script is run the, newest version is downloaded.
+# Remove lib.sh, so next time the script is run, the newest version is downloaded.
 rm -rf /tmp/lib.sh
