@@ -195,23 +195,23 @@ insert_cronjob() {
 }
 
 install_pteroq() {
-  output "Installing pteroq service.."
+  output "Installing reviq service.."
 
-  curl -o /etc/systemd/system/pteroq.service "$GITHUB_URL"/configs/pteroq.service
+  curl -o /etc/systemd/system/reviq.service "$GITHUB_URL"/configs/reviq.service
 
   case "$OS" in
   debian | ubuntu)
-    sed -i -e "s@<user>@www-data@g" /etc/systemd/system/pteroq.service
+    sed -i -e "s@<user>@www-data@g" /etc/systemd/system/reviq.service
     ;;
   rocky | almalinux)
-    sed -i -e "s@<user>@nginx@g" /etc/systemd/system/pteroq.service
+    sed -i -e "s@<user>@nginx@g" /etc/systemd/system/reviq.service
     ;;
   esac
 
-  systemctl enable pteroq.service
-  systemctl start pteroq
+  systemctl enable reviq.service
+  systemctl start reviq.service
 
-  success "Installed pteroq!"
+  success "Installed reviq!"
 }
 
 # -------- OS specific install functions ------- #
