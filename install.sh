@@ -29,8 +29,8 @@ set -e
 ######################################################################################
 
 # Default release variables
-export GITHUB_SOURCE="v1.0.0"
-export SCRIPT_RELEASE="v1.0.0"
+GITHUB_SOURCE="v1.0.0"
+SCRIPT_RELEASE="v1.0.0"
 export GITHUB_BASE_URL="https://raw.githubusercontent.com/d-belli/pterodactyl-installer/"
 
 LOG_PATH="/var/log/reviactyl-installer.log"
@@ -58,11 +58,11 @@ execute() {
 
   # Override release variables for canary
   if [[ "$1" == *"canary"* ]]; then
-    export GITHUB_SOURCE="master"
-    export SCRIPT_RELEASE="canary"
+GITHUB_SOURCE="v1.0.0"
+SCRIPT_RELEASE="v1.0.0"
   else
-    export GITHUB_SOURCE="v1.0.0"
-    export SCRIPT_RELEASE="v1.0.0"
+GITHUB_SOURCE="v1.0.0"
+SCRIPT_RELEASE="v1.0.0"
   fi
 
   update_lib_source
