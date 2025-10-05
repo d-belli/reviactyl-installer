@@ -49,10 +49,10 @@ export ARCH=""
 export SUPPORTED=false
 
 # download URLs
-export PANEL_DL_URL="https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz"
+export PANEL_DL_URL="https://github.com/reviactyl/panel/releases/latest/download/panel.tar.gz"
 export WINGS_DL_BASE_URL="https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_"
 export MARIADB_URL="https://downloads.mariadb.com/MariaDB/mariadb_repo_setup"
-export GITHUB_BASE_URL=${GITHUB_BASE_URL:-"https://raw.githubusercontent.com/pterodactyl-installer/pterodactyl-installer"}
+export GITHUB_BASE_URL=${GITHUB_BASE_URL:-"https://raw.githubusercontent.com/d-belli/reviactyl-installer"}
 export GITHUB_URL="$GITHUB_BASE_URL/$GITHUB_SOURCE"
 
 # Colors
@@ -122,16 +122,16 @@ welcome() {
   get_latest_versions
 
   print_brake 70
-  output "Pterodactyl panel installation script @ $SCRIPT_RELEASE"
+  output "Reviactyl panel installation script @ $SCRIPT_RELEASE"
   output ""
   output "Copyright (C) 2018 - 2025, Vilhelm Prytz, <vilhelm@prytznet.se>"
-  output "https://github.com/pterodactyl-installer/pterodactyl-installer"
+  output "https://github.com/d-belli/reviactyl-installer"
   output ""
-  output "This script is not associated with the official Pterodactyl Project."
+  output "This script is not associated with the official Reviactyl Project."
   output ""
   output "Running $OS version $OS_VER."
   if [ "$1" == "panel" ]; then
-    output "Latest pterodactyl/panel is $PTERODACTYL_PANEL_VERSION"
+    output "Latest reviactyl/panel is $PTERODACTYL_PANEL_VERSION"
   elif [ "$1" == "wings" ]; then
     output "Latest pterodactyl/wings is $PTERODACTYL_WINGS_VERSION"
   fi
@@ -148,7 +148,7 @@ get_latest_release() {
 
 get_latest_versions() {
   output "Retrieving release information..."
-  PTERODACTYL_PANEL_VERSION=$(get_latest_release "pterodactyl/panel")
+  PTERODACTYL_PANEL_VERSION=$(get_latest_release "reviactyl/panel")
   PTERODACTYL_WINGS_VERSION=$(get_latest_release "pterodactyl/wings")
 }
 

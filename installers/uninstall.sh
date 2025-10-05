@@ -45,11 +45,11 @@ RM_WINGS="${RM_WINGS:-true}"
 
 rm_panel_files() {
   output "Removing panel files..."
-  rm -rf /var/www/pterodactyl /usr/local/bin/composer
-  [ "$OS" != "centos" ] && unlink /etc/nginx/sites-enabled/pterodactyl.conf
-  [ "$OS" != "centos" ] && rm -f /etc/nginx/sites-available/pterodactyl.conf
+  rm -rf /var/www/reviactyl /usr/local/bin/composer
+  [ "$OS" != "centos" ] && unlink /etc/nginx/sites-enabled/reviactyl.conf
+  [ "$OS" != "centos" ] && rm -f /etc/nginx/sites-available/reviactyl.conf
   [ "$OS" != "centos" ] && ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-  [ "$OS" == "centos" ] && rm -f /etc/nginx/conf.d/pterodactyl.conf
+  [ "$OS" == "centos" ] && rm -f /etc/nginx/conf.d/reviactyl.conf
   systemctl restart nginx
   success "Removed panel files."
 }
@@ -68,9 +68,9 @@ rm_wings_files() {
   systemctl disable --now wings
   [ -f /etc/systemd/system/wings.service ] && rm -rf /etc/systemd/system/wings.service
 
-  [ -d /etc/pterodactyl ] && rm -rf /etc/pterodactyl
+  [ -d /etc/reviactyl ] && rm -rf /etc/reviactyl
   [ -f /usr/local/bin/wings ] && rm -rf /usr/local/bin/wings
-  [ -d /var/lib/pterodactyl ] && rm -rf /var/lib/pterodactyl
+  [ -d /var/lib/reviactyl ] && rm -rf /var/lib/reviactyl
   success "Removed wings files."
 }
 
@@ -85,7 +85,7 @@ rm_services() {
   centos)
     systemctl disable --now redis
     systemctl disable --now php-fpm
-    rm -rf /etc/php-fpm.d/www-pterodactyl.conf
+    rm -rf /etc/php-fpm.d/www-reviactyl.conf
     ;;
   esac
   success "Removed services."
@@ -93,7 +93,7 @@ rm_services() {
 
 rm_cron() {
   output "Removing cron jobs..."
-  crontab -l | grep -vF "* * * * * php /var/www/pterodactyl/artisan schedule:run >> /dev/null 2>&1" | crontab -
+  crontab -l | grep -vF "* * * * * php /var/www/reviactyl/artisan schedule:run >> /dev/null 2>&1" | crontab -
   success "Removed cron jobs."
 }
 
@@ -102,7 +102,7 @@ rm_database() {
   valid_db=$(mariadb -u root -e "SELECT schema_name FROM information_schema.schemata;" | grep -v -E -- 'schema_name|information_schema|performance_schema|mysql')
   warning "Be careful! This database will be deleted!"
   if [[ "$valid_db" == *"panel"* ]]; then
-    echo -n "* Database called panel has been detected. Is it the pterodactyl database? (y/N): "
+    echo -n "* Database called panel has been detected. Is it the reviactyl database? (y/N): "
     read -r is_panel
     if [[ "$is_panel" =~ [Yy] ]]; then
       DATABASE=panel
@@ -126,11 +126,11 @@ rm_database() {
   output "Removing database user..."
   valid_users=$(mariadb -u root -e "SELECT user FROM mysql.user;" | grep -v -E -- 'user|root')
   warning "Be careful! This user will be deleted!"
-  if [[ "$valid_users" == *"pterodactyl"* ]]; then
-    echo -n "* User called pterodactyl has been detected. Is it the pterodactyl user? (y/N): "
+  if [[ "$valid_users" == *"reviactyl"* ]]; then
+    echo -n "* User called reviactyl has been detected. Is it the reviactyl user? (y/N): "
     read -r is_user
     if [[ "$is_user" =~ [Yy] ]]; then
-      DB_USER=pterodactyl
+      DB_USER=reviactyl
     else
       print_list "$valid_users"
     fi

@@ -102,8 +102,8 @@ check_FQDN_SSL() {
 
 main() {
   # check if we can detect an already existing installation
-  if [ -d "/var/www/pterodactyl" ]; then
-    warning "The script has detected that you already have Pterodactyl panel on your system! You cannot run the script multiple times, it will fail!"
+  if [ -d "/var/www/reviactyl" ]; then
+    warning "The script has detected that you already have Reviactyl panel on your system! You cannot run the script multiple times, it will fail!"
     echo -e -n "* Are you sure you want to proceed? (y/N): "
     read -r CONFIRM_PROCEED
     if [[ ! "$CONFIRM_PROCEED" =~ [Yy] ]]; then
@@ -132,7 +132,7 @@ main() {
 
   MYSQL_USER="-"
   while [[ "$MYSQL_USER" == *"-"* ]]; do
-    required_input MYSQL_USER "Database username (pterodactyl): " "" "pterodactyl"
+    required_input MYSQL_USER "Database username (reviactyl): " "" "reviactyl"
     [[ "$MYSQL_USER" == *"-"* ]] && error "Database user cannot contain hyphens"
   done
 
@@ -151,7 +151,7 @@ main() {
     [ -z "$timezone_input" ] && timezone="Europe/Stockholm" # because köttbullar!
   done
 
-  email_input email "Provide the email address that will be used to configure Let's Encrypt and Pterodactyl: " "Email cannot be empty or invalid"
+  email_input email "Provide the email address that will be used to configure Let's Encrypt and Reviactyl: " "Email cannot be empty or invalid"
 
   # Initial admin account
   email_input user_email "Email address for the initial admin account: " "Email cannot be empty or invalid"
@@ -202,7 +202,7 @@ main() {
 
 summary() {
   print_brake 62
-  output "Pterodactyl panel $PTERODACTYL_PANEL_VERSION with nginx on $OS"
+  output "Reviactyl panel $PTERODACTYL_PANEL_VERSION with nginx on $OS"
   output "Database name: $MYSQL_DB"
   output "Database user: $MYSQL_USER"
   output "Database password: (censored)"
