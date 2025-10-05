@@ -369,4 +369,70 @@ Delta compression using up to 2 threads
 Compressing objects:  14% (1/7)Compressing objects:  28% (2/7)Compressing objects:  42% (3/7)Compressing objects:  57% (4/7)Compressing objects:  71% (5/7)Compressing objects:  85% (6/7)Compressing objects: 100% (7/7)Compressing objects: 100% (7/7), done.
 Writing objects:  14% (1/7)Writing objects:  28% (2/7)Writing objects:  42% (3/7)Writing objects:  57% (4/7)Writing objects:  71% (5/7)Writing objects:  85% (6/7)Writing objects: 100% (7/7)Writing objects: 100% (7/7), 5.84 KiB | 1.46 MiB/s, done.
 Total 7 (delta 4), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolvin
+remote: Resolving deltas:   0% (0/4)[Kremote: Resolving deltas:  25% (1/4)[Kremote: Resolving deltas:  50% (2/4)[Kremote: Resolving deltas:  75% (3/4)[Kremote: Resolving deltas: 100% (4/4)[Kremote: Resolving deltas: 100% (4/4), completed with 2 local objects.[K
+To github.com:d-belli/reviactyl-installer.git
+   069d970..fb69693  master -> master
+* Release v1.0.0 pushed
+* Create a new release, with changelog below - https://github.com/d-belli/reviactyl-installer/releases/new
+* 
+# v1.0.0
+
+Put a message here describing the release.
+
+## Changelog
+
+## v1.0.0 (released on 2025-10-05)
+
+### Added
+
+- [#543](https://github.com/d-belli/reviactyl-installer/commit/0522c13e5bf5cc56e6df631ad16cabf51be79bd5) all: Add reviactyl url install
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# bash scripts/release.sh v1.0.0
+[?2004l* Releasing v1.0.0 on 2025-10-05
+* Commit release
+[master d030666] Release v1.0.0
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+Enumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 1.78 KiB | 606.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To github.com:d-belli/reviactyl-installer.git
+   fb69693..d030666  master -> master
+* Release v1.0.0 pushed
+* Create a new release, with changelog below - https://github.com/d-belli/reviactyl-installer/releases/new
+* 
+# v1.0.0
+
+Put a message here describing the release.
+
+## Changelog
+
+## v1.0.0 (released on 2025-10-05)
+
+### Added
+
+- [#543](https://github.com/d-belli/reviactyl-installer/commit/0522c13e5bf5cc56e6df631ad16cabf51be79bd5) all: Add reviactyl url install
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# cd
+[?2004l[?2004h]0;root@arenanewsite: ~root@arenanewsite:~# git [K[K[K[Kcd reviactyl-installer/
+[?2004l[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# gu[Kit p[Kfetch
+[?2004lFrom github.com:d-belli/reviactyl-installer
+ * [new tag]         v1.0.0     -> v1.0.0
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# git pull
+[?2004lAlready up to date.
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# git pull
+[?2004lremote: Enumerating objects: 9, done.[K
+remote: Counting objects:  12% (1/8)[Kremote: Counting objects:  25% (2/8)[Kremote: Counting objects:  37% (3/8)[Kremote: Counting objects:  50% (4/8)[Kremote: Counting objects:  62% (5/8)[Kremote: Counting objects:  75% (6/8)[Kremote: Counting objects:  87% (7/8)[Kremote: Counting objects: 100% (8/8)[Kremote: Counting objects: 100% (8/8), done.[K
+remote: Compressing objects:  50% (1/2)[Kremote: Compressing objects: 100% (2/2)[Kremote: Compressing objects: 100% (2/2), done.[K
+remote: Total 5 (delta 3), reused 5 (delta 3), pack-reused 0 (from 0)[K
+Unpacking objects:  20% (1/5)Unpacking objects:  40% (2/5)Unpacking objects:  60% (3/5)Unpacking objects:  80% (4/5)Unpacking objects: 100% (5/5)Unpacking objects: 100% (5/5), 625 bytes | 125.00 KiB/s, done.
+From github.com:d-belli/reviactyl-installer
+   d030666..2c7869d  master     -> origin/master
+Updating d030666..2c7869d
+Fast-forward
+ README.md | 2 [32m+[m[31m-[m
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# git pullfetchcd reviactyl-installer/[Kbash scripts/release.sh v1.0.0
+[?2004l* Releasing v1.0.0 on 2025-10-05
+*
