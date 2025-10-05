@@ -298,4 +298,59 @@ ssb   rsa4096/740277A62394F1AA 2025-10-05 [E]
 uid                 [ultimate] André Belli <andre@arenahosting.com.br>
 ssb   rsa4096/740277A62394F1AA 2025-10-05 [E]
 
-[?20
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# [7mgit config --global commit.gpgSign true[27mgit config --global commit.gpgSign true
+[?2004l[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# git config --global commit.gpgSign truepg --list-secret-keys --keyid-format LONG 4AA02277D74243B1EB5C52A08FDCEF412FC24FC5[K[19Pfull-generate-keybash scripts/release.sh v1.0.0git config --global user.name "André Belli"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[13Pbash scripts/release.sh v1.0.0
+[?2004l* Releasing v1.0.0 on 2025-10-05
+* Commit release
+error: gpg failed to sign the data:
+[GNUPG:] KEY_CONSIDERED 4AA02277D74243B1EB5C52A08FDCEF412FC24FC5 2
+[GNUPG:] BEGIN_SIGNING H10
+[GNUPG:] PINENTRY_LAUNCHED 9292 curses 1.2.1 - xterm localhost:10.0 - 0/0 -
+gpg: signing failed: Inappropriate ioctl for device
+[GNUPG:] FAILURE sign 83918950
+gpg: signing failed: Inappropriate ioctl for device
+
+fatal: failed to write commit object
+Everything up-to-date
+* Release v1.0.0 pushed
+* Create a new release, with changelog below - https://github.com/d-belli/reviactyl-installer/releases/new
+* 
+# v1.0.0
+
+Put a message here describing the release.
+
+## Changelog
+
+## v1.0.0 (released on 2025-10-05)
+
+### Added
+
+- [#543](https://github.com/d-belli/reviactyl-installer/commit/0522c13e5bf5cc56e6df631ad16cabf51be79bd5) all: Add reviactyl url install
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# [7mgit config --global user.signingkey 8FDCEF412FC24FC5[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit config --global user.signingkey 8FDCEF412FC24FC5
+[?2004l[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# [7mgit commit -S -m "Test GPG commit"[27mgit commit -S -m "Test GPG commit"
+[?2004lerror: gpg failed to sign the data:
+[GNUPG:] KEY_CONSIDERED 4AA02277D74243B1EB5C52A08FDCEF412FC24FC5 2
+[GNUPG:] BEGIN_SIGNING H10
+[GNUPG:] PINENTRY_LAUNCHED 9483 curses 1.2.1 - xterm localhost:10.0 - 0/0 -
+gpg: signing failed: Inappropriate ioctl for device
+[GNUPG:] FAILURE sign 83918950
+gpg: signing failed: Inappropriate ioctl for device
+
+fatal: failed to write commit object
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# [7mgit config --global commit.gpgSign false[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit config --global commit.gpgSign false
+[A
+[?2004l[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# [7mgit -c commit.gpgSign=false commit -m "Test commit without GPG"[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit -c commit.gpgSign=false commit -m "Test commit without GPG"
+[A
+[?2004l[master 51c1559] Test commit without GPG
+ 2 files changed, 307 insertions(+), 6 deletions(-)
+ create mode 100644 typescript
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# git -c commit.gpgSign=false commit -m "Test commit without GPG"
+[?2004lOn branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;root@arenanewsite: ~/reviactyl-installerroot@arenanewsite:~/reviactyl-installer# [7meval "$(gpg-agent --daemon)"[27meval "$(gpg-agent --daemon)"
+[?2004lgpg-agent: a gpg-agent is already running - not st
