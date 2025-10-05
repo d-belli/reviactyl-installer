@@ -31,7 +31,7 @@ set -e
 # Default release variables
 GITHUB_SOURCE="v1.0.0"
 SCRIPT_RELEASE="v1.0.0"
-export GITHUB_BASE_URL="https://raw.githubusercontent.com/d-belli/pterodactyl-installer/"
+export GITHUB_BASE_URL="https://raw.githubusercontent.com/d-belli/reviactyl-installer/"
 
 LOG_PATH="/var/log/reviactyl-installer.log"
 
